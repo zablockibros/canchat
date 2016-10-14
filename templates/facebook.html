@@ -1,0 +1,75 @@
+<ion-view>
+    <!-- create the slidebox. Listen for on-slide-changed events we will wire up later. -->
+    <ion-slide-box show-pager="false">
+
+      <ion-slide>
+			<ion-view title="Settings">
+				<ion-content has-bouncing="false" class="vertical-centered" style="background-color:#9dbff7;color:white;">
+					<div class="padding" ng-if="!fbinfo">
+						<center>
+							<h3>Get started...</h3>
+						</center>
+						<button ng-click="facebooklogin()" class="button icon-left ion-social-facebook button-block button-positive">Connect to Facebook</button>
+					</div>
+				</ion-content>
+				<ion-footer-bar align-title="right" class="bar-positive">
+					<h1 class="title" ng-click="goToFeed()">Skip this step</h1>
+				</ion-footer-bar>
+			</ion-view>
+      </ion-slide>
+	  
+      <ion-slide>
+			<ion-view title="Settings">
+				<ion-content has-bouncing="false" class="">
+					<div class="item" ng-if="fbinfo && 1 == 2">
+						<i class="icon ion-social-facebook"></i> {{fbinfo.first_name}} {{fbinfo.last_name}}
+					</div>
+					<div class="padding" ng-if="fbinfo && !checkingFB">
+						<button class="button icon-left ion-social-facebook button-block">You are {{fbinfo.first_name}} {{fbinfo.last_name}}</button>
+					</div>
+					<center>
+						<h4>Add friends...</h4>
+					</center>
+					<div class="list list-inset bg-white">
+						<div class="item item-divider" ng-if="fbinfo && 1 == 2">
+							Add some friends!
+						</div>
+						<div class="item" ng-if="!fbfriends && fbinfo">
+							None of your friends are on CanChat yet
+						</div>
+						<div class="item" ng-if="gettingFriends && fbinfo">
+							Finding Facebook friends...
+						</div>
+					  <div class="item item-button-right" ng-repeat="friend in fbfriends | orderByPriority | orderBy:'name':true">
+						<i class="icon ion-social-facebook-outline r-cush-5"></i> {{friend.name}} (i.e. {{friend.fb_name}})
+						<button ng-if="!friend.isFriend" class="button button-positive round" ng-click="addFBContact(friend.uid, friend.name)">
+						  <i class="icon ion-plus-round"></i>
+						</button>
+						<button ng-if="friend.isFriend" class="button button-assertive round" ng-click="confirmFBDelete2(friend.uid, friend.name)">
+						  <i class="icon ion-minus-round"></i>
+						</button>
+					  </div>
+					</div>
+				</ion-content>
+				<ion-footer-bar align-title="right" class="bar-positive">
+					<h1 class="title" ng-click="goToLast()">Go to next</h1>
+				</ion-footer-bar>
+			</ion-view>
+      </ion-slide>
+	
+      <ion-slide>
+			<ion-view title="Settings">
+				<ion-content has-bouncing="false" class="vertical-centered" style="background-color:#9dbff7;color:white;">
+					<div class="padding" ng-if="fbinfo">
+						<center>
+							<h3>Tell friends...</h3>
+						</center>
+						<button ng-click="facebookshare()" class="button icon-left ion-social-facebook button-block button-positive">Share your username!</button>
+					</div>
+				</ion-content>
+				<ion-footer-bar align-title="right" class="bar-positive">
+					<h1 class="title" ng-click="goToFeed()">I'm all done</h1>
+				</ion-footer-bar>
+			</ion-view>
+      </ion-slide>
+</ion-view>

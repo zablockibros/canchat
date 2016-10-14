@@ -1,0 +1,38 @@
+<ion-tabs class="tabs-stable tabs-icon-only">
+	<ion-tab title="Friends" icon-on="ion-ios7-person" icon-off="ion-ios7-person-outline" ng-click="$state.transitionTo('tabs.friends')">
+		<ion-header-bar class="bar-royal">
+			<button class="button" ng-click="newFriend()">Find friends</button>
+			<h1 class="title">Friends</h1>
+		</ion-header-bar>
+		<ion-header-bar class="bar-light bar-subheader">
+			<input type="search"
+			  placeholder="Filter friends..."
+			  ng-model="f.search"
+			  ng-focus="searchFocused = true"
+			  ng-blur="searchFocused = false"
+			  ng-change="scrollTop()">
+			<button ng-if="f.search.length"
+			  class="button button-icon ion-android-close input-button"
+			  ng-click="clearSearch()">
+			</button>
+		</ion-header-bar>
+		<ion-nav-view name="friends-tab"></ion-nav-view>
+	</ion-tab>
+	<ion-tab title="Feed" icon-on="ion-chatbubbles" icon-off="ion-chatbubbles icon-coolblue" ng-click="$state.transitionTo('tabs.feed')" badge="badges.feed" badge-style="badge-assertive">
+		<ion-header-bar class="bar-royal">
+			<a class="button button-icon icon ion-arrow-left-c" ng-if="messageButton == 'comment'" ng-click="$state.transitionTo('tabs.feed')"></a>
+			<h1 class="title">
+				<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIzNnB4IiBoZWlnaHQ9IjM3cHgiIHZpZXdCb3g9IjAgMCAzNiAzNyIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzYgMzciIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggZmlsbD0iI0RDNUVGRiIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNMjguMzY4LDIyLjMwNQ0KCWMxLjA0Ny0zLjcwNywwLjE2OC03Ljg1Ny0yLjY5LTEwLjgyNmMtMC41NzgtMC42LTEuMjA5LTEuMTE1LTEuODc0LTEuNTU5Yy0wLjYyNC0zLjI0LTIuNjQ2LTUuOTgxLTUuNDEyLTcuNTcyDQoJYzEuNjM2LTAuOTM4LDMuNTI2LTEuNDgyLDUuNTQ3LTEuNDgyYzYuMTc0LDAsMTEuMTc5LDUuMDA1LDExLjE3OSwxMS4xNzljMCwwLDAuNCwyLjk4Ni0xLjM1Myw1LjMzMmwxLjM1Myw1Ljg0NmwtNS44NjgtMS4zNA0KCWMwLDAtNC43MTgsMS4xNzEtNi40NTUtMC4yNjEiLz4NCjxwYXRoIGZpbGw9IiNDNjU0RTUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTTMuMDA4LDE3LjM3N2wtMS4zNTMsNS44NDZsNS4yMTgtMS4xOTINCgljLTAuOTk4LTMuNzgxLDAuMDEzLTcuOTY2LDMuMDMzLTEwLjg3M2MzLjg0OC0zLjcwNCw5LjYzNS00LjA4MiwxMy44OTktMS4yMzljLTAuOTkzLTUuMTU3LTUuNTI1LTkuMDU0LTEwLjk3MS05LjA1NA0KCWMtNi4xNzQsMC0xMS4xNzksNS4wMDUtMTEuMTc5LDExLjE3OUMxLjY1NCwxMi4wNDQsMS4yNTMsMTMuODk1LDMuMDA4LDE3LjM3N3oiLz4NCjxwYXRoIGZpbGw9IiNCMDRCQ0MiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0xNy4yMTMsMzUuMjAyTDE0LDI5Ljg0NHYtMC4wMzcNCgljLTItMC40NzktMy4yMDYtMS40NzYtNC41NC0yLjg2MUM1LjE3OSwyMi40OTgsNS4zNjksMTUuNDQsOS44MTcsMTEuMTU5UzIxLjQsNy4wMywyNS42ODIsMTEuNDc5DQoJYzQuMjgxLDQuNDQ4LDQuMTQ0LDExLjc0NS0wLjMwNCwxNi4wMjZjLTEuMzk2LDEuMzQzLTMuMDQ1LDIuMTgxLTQuNzksMi45NDNMMTcuMjEzLDM1LjIwMnoiLz4NCjwvc3ZnPg0K" />
+			</h1>
+			<button class="button" ng-if="messageButton == 'feed'" ng-click="newTask()">Send</button>
+			<button class="button" ng-if="messageButton == 'comment'" ng-click="newComment()">Reply</button>
+		</ion-header-bar>
+		<ion-nav-view name="feed-tab"></ion-nav-view>
+	</ion-tab>
+	<ion-tab title="Settings" icon-on="ion-ios7-gear" icon-off="ion-ios7-gear-outline" ng-click="$state.transitionTo('tabs.settings')">
+		<ion-header-bar class="bar-royal">
+			<h1 class="title">Settings</h1>
+		</ion-header-bar>
+		<ion-nav-view name="settings-tab"></ion-nav-view>
+	</ion-tab>
+</ion-tabs>

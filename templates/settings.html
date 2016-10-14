@@ -1,0 +1,45 @@
+<ion-view title="Settings">
+	<ion-header-bar class="bar-royal">
+		<button class="button button-icon icon ion-chatbubbles" ng-click="$state.go('feed')"></button>
+		<h1 class="title">Settings</h1>
+		<button class="button button-icon icon ion-person-stalker" ng-click="$state.go('friends')"></button>
+	</ion-header-bar>
+	<ion-content>
+		<div class="item item-divider">
+			Get notified about:
+		</div>
+		<div class="item" ng-if="!hasSettings">
+			Loading...
+		</div>
+		<ion-checkbox ng-if="hasSettings" ng-model="settings.push_new">Group messages</ion-checkbox>
+		<ion-checkbox ng-if="hasSettings" ng-model="settings.push_pm">Private messages</ion-checkbox>
+		<ion-checkbox ng-if="hasSettings" ng-model="settings.push_new_comments">Comments on group message</ion-checkbox>
+		<ion-checkbox ng-if="hasSettings" ng-model="settings.push_pm_comments">Comments on private message</ion-checkbox>
+		<div class="item item-divider">
+			You are
+		</div>
+		<div class="item" ng-if="yourName">
+			{{yourName}}
+		</div>
+		<div class="item" ng-if="fbinfo">
+			<i class="icon ion-social-facebook"></i> {{fbinfo.first_name}} {{fbinfo.last_name}}
+		</div>
+		<div class="item" ng-if="settings.number_verified">
+			<i class="icon ion-iphone"></i> {{settings.verify_number}}
+		</div>
+		<div class="padding" ng-if="!fbinfo && !checkingFB">
+			<button ng-click="facebooklogin()" class="button icon-left ion-social-facebook button-block button-positive">Connect to Facebook</button>
+		</div>
+		<div class="padding" ng-if="fbinfo && !checkingFB">
+			<button ng-click="facebookdisconnect()" class="button icon-left ion-social-facebook button-block">Disconnect</button>
+		</div>
+		<div ng-if="!settings.number_verified" class="padding">
+			<button ng-click="openVerifyPhone()" class="button icon-left ion-iphone button-block">Phone verify</button>
+		</div>
+	</ion-content>
+	<ion-footer-bar class="bar-stable" ng-click="logoutNow()">
+		<h1 class="title" style="padding-top:7px;">
+			<button class="button button-icon icon ion-power"></button>
+		</h1>
+	</ion-footer-bar>
+</ion-view>

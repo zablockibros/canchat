@@ -1,0 +1,67 @@
+<div class="modal" ng-controller="FeedTabCtrl">
+	<!-- Modal header bar -->
+	<ion-header-bar class="bar-secondary bar-royal">
+		<h1 class="title">Compose</h1>
+		<button class="button button-clear" ng-click="closeNewTask()">Cancel</button>
+	</ion-header-bar>
+	<!-- Modal content area -->
+	<ion-content>
+		<form>
+			<ul class="list">
+				<li class="item item-input">
+					<textarea  placeholder="What do you have to say?" ng-model="data.content" ng-required ng-minlength="1" ng-maxlength="2000"></textarea>
+				</li>
+				 <li class="item item-toggle">
+					 Anonymous
+					 <label class="toggle toggle-positive">
+					   <input type="checkbox" ng-model="data.annonymous">
+					   <div class="track">
+						 <div class="handle"></div>
+					   </div>
+					 </label>
+				 </li>
+			</ul>
+		</form>
+		<!---<ion-scroll>--->
+			<ion-list>
+			  <div class="item item-divider">
+				Friends
+			  </div>
+			  <div class="item pad-0">
+				<input type="search"
+				  placeholder="Filter friends..."
+				  ng-model="data.searchFilter"
+				  ng-focus="searchFocused = true"
+				  ng-blur="searchFocused = false"
+				  ng-change="scrollTop()">
+				<button ng-if="data.searchFilter.length" style="top:-3px;" 
+				  class="button button-icon ion-android-close input-button"
+				  ng-click="clearSearch()">
+				</button>
+			</div>
+			  <ion-item class="item-button-right" ng-hide="data.searchFilter">
+				All friends
+				<button ng-hide="data.hasAllFriends" class="button button-positive" ng-click="appendAllFriends()">
+				  <i class="icon ion-plus-round"></i>
+				</button>
+				<button ng-show="data.hasAllFriends" class="button button-assertive" ng-click="removeAllFriends()">
+				  <i class="icon ion-close-round"></i>
+				</button>
+			  </ion-item>
+			  <ion-item class="item-button-right" ng-repeat="friend in friends | orderByPriority | orderBy:'name' | filter: { name: data.searchFilter }">
+				{{friend.name}} <span ng-if="friend.number">({{friend.number}})</span>
+				<button ng-hide="data.friends[friend.uid]" class="button button-positive" ng-click="appendNewMessageFriend(((friend.number) ? friend.number : friend.uid), friend.name)">
+				  <i class="icon ion-plus-round"></i>
+				</button>
+				<button ng-show="data.friends[friend.uid]" class="button button-assertive" ng-click="removeNewMessageFriend(((friend.number) ? friend.number : friend.uid))">
+				  <i class="icon ion-close-round"></i>
+				</button>
+			  </ion-item>
+			  <!--<div class="item item-divider">A</div>-->
+			</ion-list>
+		<!---</ion-scroll>--->
+	</ion-content>
+	<ion-footer-bar class="bar-positive" ng-click="sendMessage()">
+	  <h1 class="title">Send</h1>
+	</ion-footer-bar>
+</div>

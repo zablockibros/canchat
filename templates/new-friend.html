@@ -1,0 +1,69 @@
+<div class="modal"  ng-controller="FriendsTabCtrl">
+	<!-- Modal header bar -->
+	<ion-header-bar class="bar-secondary bar-royal">
+		<h1 class="title">Find friends</h1>
+		<button class="button button-clear" ng-click="closeNewFriend()">Cancel</button>
+	</ion-header-bar>
+	<ion-header-bar class="bar-light bar-subheader">
+		<input type="search"
+		  placeholder="Search by username..."
+		  ng-model="searchP"
+		  ng-focus="searchFocused = true"
+		  ng-blur="searchFocused = false"
+		  ng-change="scrollTop()">
+		<button ng-if="searchP.length"
+		  class="button button-icon ion-ios7-search-strong input-button"
+		  ng-click="searchPeople(searchP)">
+		</button>
+	</ion-header-bar>
+	<!-- Modal content area -->
+	<ion-content>
+		<div class="cush-10" ng-if="!noneFound && !found"><p>Don't be a loner, add friends!</p></div>
+		<div class="cush-10" ng-if="noneFound"><p>We could not find anyone with that username... it's probably your fault.</p></div>
+		<div class="list" ng-if="found && !noneFound">
+		  <div class="item item-button-right">
+			{{found}}
+			<button ng-if="!isFriend" class="button button-positive" ng-click="addContact(friendID, found)">
+			  <i class="icon ion-plus-round"></i>
+			</button>
+			<button ng-if="isFriend" class="button button-assertive" ng-click="confirmDelete2(friendID, found)">
+			  <i class="icon ion-minus-round"></i>
+			</button>
+		  </div>
+		</div>
+
+		<div class="item item-divider" ng-if="!data.fbinfo && !data.checkingFB">
+			Find friends from Facebook
+		</div>
+		<div class="padding" ng-if="!data.fbinfo && !data.checkingFB">
+			<button ng-click="facebooklogin()" class="button icon-left ion-social-facebook button-block button-positive">Connect to Facebook</button>
+		</div>
+		
+
+		<div class="list">
+			<div class="item item-divider" ng-if="data.fbinfo">
+				Your Facebook friends
+			</div>
+			<div class="item" ng-if="!data.fbfriends && data.fbinfo">
+				None of your friends are on CanChat yet
+			</div>
+			<div class="item" ng-if="data.gettingFriends && data.fbinfo">
+				Finding Facebook friends...
+			</div>
+		  <div class="item item-button-right" ng-repeat="friend in data.fbfriends | orderByPriority | orderBy:'name':true">
+			<i class="icon ion-social-facebook-outline r-cush-5"></i> {{friend.name}} (i.e. {{friend.fb_name}})
+			<button ng-if="!friend.isFriend" class="button button-positive" ng-click="addFBContact(friend.uid, friend.name)">
+			  <i class="icon ion-plus-round"></i>
+			</button>
+			<button ng-if="friend.isFriend" class="button button-assertive" ng-click="confirmFBDelete2(friend.uid, friend.name)">
+			  <i class="icon ion-minus-round"></i>
+			</button>
+		  </div>
+		</div>
+	</ion-content>
+	<ion-footer-bar class="bar-stable" ng-click="syncContacts()">
+		<h1 class="title">
+			Sync contacts
+		</h1>
+	</ion-footer-bar>
+</div>

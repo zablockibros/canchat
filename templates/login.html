@@ -1,0 +1,64 @@
+
+  <ion-side-menus ng-controller="LoginCtrl">
+
+    <!-- Center content -->
+    <ion-side-menu-content>
+	  <!---<ion-tabs class="tabs-stable">
+		<ion-tab title="Login">--->
+		  <!---<ion-header-bar class="bar-royal" >
+			<h1 class="title"><img src="img/logo.svg" /></h1>
+		  </ion-header-bar>--->
+		  <ion-content  style="text-align:center;background-color:#fff;">
+			<div class="t-cush-20">
+				<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMzAwcHgiIGhlaWdodD0iMjAwcHgiIHZpZXdCb3g9IjAgMCAzMDAgMjAwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMDAgMjAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNFNTBEMDgiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0xOTUuMjEyLDE3Ny41NjlsMjguNzE1LTE5LjA0MQ0KCWMxMC45OTgtMC43ODcsMjIuNzI5LTEuNzgsMzIuOTQtNi40MTdjMzIuNTQ0LTE0Ljc3OCw0Ny4wNjQtNTQuNDUxLDMyLjI4NS04Ni45OTZjLTE0Ljc3OC0zMi41NDQtNTQuMDYyLTQ3LjM4My04Ni42MDctMzIuNjA1DQoJcy00OC40ODMsNTIuNDg3LTMzLjcwNSw4NS4wMzFjNC42MDIsMTAuMTM0LDEyLjk2MSwxOS4yMTIsMTYuNzA1LDIzLjQ3OUwxOTUuMjEyLDE3Ny41Njl6Ii8+DQo8cGF0aCBkPSJNMjMzLjY1MSw4NS42MjhjMCwwLDMzLjE2NC0zLjQwNiw1MS44MjYsMTguMzM1YzAsMC0xMi43MDUsMjkuMjExLTQwLjU1NCwxOS4zNThTMjMzLjY1MSw4NS42MjgsMjMzLjY1MSw4NS42Mjh6Ii8+DQo8cGF0aCBmaWxsPSIjNTUyQkRGIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNMTA0LjgzNCwxNzYuNzExbDguNjMzLTMzLjM3OQ0KCWM3LjY1OC03Ljk0MywxNS43MjUtMTYuNTMsMjAuMjIyLTI2LjgxMWMxNC4zMzQtMzIuNzY5LTEuNC03Mi4wMDYtMzQuMTY5LTg2LjM0Yy0zMi43NjktMTQuMzM0LTcxLjkzMSwwLjkwMi04Ni4yNjQsMzMuNjcxDQoJcy0wLjk3MSw3MS40OTQsMzEuNzk4LDg1LjgyOGMxMC4yMDMsNC40NjMsMjIuNDk3LDUuNjI4LDI4LjEzOCw2LjI5OEwxMDQuODM0LDE3Ni43MTF6Ii8+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTTYxLjczNiw5MC40MTciLz4NCjxwYXRoIGQ9Ik01NC41LDc0LjkxNmMyLjU5OCwwLjQ0OCw0LjA1MiwzLjUwNSw1LjEzNiw2LjEyNmMyLjgwNCw2Ljc3OS0wLjQxOSwxNC41NDctNy4xOTgsMTcuMzUxDQoJYy02Ljc3OSwyLjgwNC0xNC41NDctMC40MTktMTcuMzUxLTcuMTk4Yy0xLjE3LTIuODI4LTIuNDQ1LTYuNDYxLTAuNTQxLTguNTdDMzguMTMsNzguNjU2LDQ5LjIzLDc0LjAwNiw1NC41LDc0LjkxNnoiLz4NCjxwYXRoIGQ9Ik05NS43MjIsNTcuODY3YzIuNTk4LDAuNDQ4LDQuMDUyLDMuNTA1LDUuMTM2LDYuMTI2YzIuODA0LDYuNzc5LTAuNDE5LDE0LjU0Ny03LjE5OCwxNy4zNTFzLTE0LjU0Ny0wLjQxOS0xNy4zNTEtNy4xOTgNCgljLTEuMTctMi44MjgtMi40NDUtNi40NjEtMC41NDEtOC41N0M3OS4zNTEsNjEuNjA3LDkwLjQ1Miw1Ni45NTcsOTUuNzIyLDU3Ljg2N3oiLz4NCjxwYXRoIGQ9Ik00OS4yNDMsMTE2LjYwNmMwLDAsNDUuODQzLDM0LjM3MSw2Mi4yNTgtMjUuNzQ5Ii8+DQo8cGF0aCBkPSJNMjI5LjEzMyw4NC4wM2MwLDAtMjMuNjQ0LTIzLjUwMy01MS44MjYtMTguMzM1YzAsMC04LjQ5MSwzMC43MDIsMTkuMzU4LDQwLjU1NFMyMjkuMTMzLDg0LjAzLDIyOS4xMzMsODQuMDN6Ii8+DQo8cGF0aCBmaWxsPSIjQjA0QkNDIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNMTQ2LjI5NiwxODMuMDE0bDE5Ljk1NC0yNi41MDkNCgljOS43MzItNC4yNDcsMjAuMDYzLTguOTE2LDI3Ljg0NC0xNi40MDVjMjQuNzk5LTIzLjg2OSwyNS4yMzktNjQuNTUsMS4zNjktODkuMzQ5Yy0yMy44NjktMjQuNzk5LTY0LjI5OS0yNS42NTQtODkuMDk5LTEuNzg0DQoJcy0yNy4xNTksNjMuMjIyLTMuMjg5LDg4LjAyMmM3LjQzMiw3LjcyMiwxNy45MzcsMTMuMjc5LDIyLjcwNywxNS45NUwxNDYuMjk2LDE4My4wMTR6Ii8+DQo8cGF0aCBkPSJNMTUxLjY2Myw4Ny4yYzAsMCwyOS4wMTUtMTMuNzQ0LDUyLjkzOSwwYzAsMC0yLjE1MiwzMC42LTMwLjYsMzAuNlMxNTEuNjYzLDg3LjIsMTUxLjY2Myw4Ny4yeiIvPg0KPHBhdGggZD0iTTE0Ny4wNDgsODcuMmMwLDAtMjkuMDE1LTEzLjc0NC01Mi45MzksMGMwLDAsMi4xNTIsMzAuNiwzMC42LDMwLjZTMTQ3LjA0OCw4Ny4yLDE0Ny4wNDgsODcuMnoiLz4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNMTM5LjcwOCw5MC40MjMiLz4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNMjM3LjIyOCwxMjEuNzk4Ii8+DQo8L3N2Zz4NCg==" />
+			</div>
+			<div class="list">
+			  <label class="item item-input">
+				<span class="input-label">Username</span>
+				<input type="text" ng-model="data.username">
+			  </label>
+			  <label class="item item-input">
+				<span class="input-label">Password</span>
+				<input type="password" ng-model="data.pass">
+			  </label>
+				<label ng-cloak ng-show="createMode" class="item item-input">
+					<input type="password" placeholder="Confirm Password" ng-model="data.confirm" />
+				</label>
+			</div>
+			<p ng-show="data.err" class="error">{{data.err}}</p>
+			<div class="padding">
+				<button ng-click="login()" class="button button-block button-positive">Log In</button>
+			</div>
+			<p>Not a member yet? <a ng-click="openSignupModal()" style="text-decoration:none;">Sign up! <i class="icon ion-arrow-right-c"></i></a></p>
+		  </ion-content>
+		  <!---</ion-tab>
+		  <ion-tab title="Sign up">
+		  <ion-header-bar class="bar-royal">
+			<h1 class="title"><img src="img/logo.svg" /></h1>
+		  </ion-header-bar>
+			  <ion-content>
+				<div class="list">
+				  <label class="item item-input">
+					<input type="text" placeholder="Email address" ng-model="data.email">
+				  </label>
+				  <label class="item item-input">
+					<input type="text" placeholder="Username" ng-model="data.username">
+				  </label>
+				  <label class="item item-input">
+					<input type="password" placeholder="Password" ng-model="data.pass">
+				  </label>
+				  <label class="item item-input">
+					<input type="password" placeholder="Confirm password" ng-model="data.confirm">
+				  </label>
+				</div>
+				<div class="padding">
+					<button ng-click="createAccount()" class="button button-block button-positive">Sign up</button>
+				</div>
+				<p ng-show="data.err" class="error">{{data.err}}</p>
+			  </ion-content>
+		  </ion-tab>
+		</ion-tabs>--->
+    </ion-side-menu-content>
+
+
+  </ion-side-menus>

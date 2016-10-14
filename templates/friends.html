@@ -1,0 +1,41 @@
+<ion-view title="Friends" ng-controller="FriendsTabCtrl">
+	<ion-header-bar class="bar-royal">
+		<!--<button class="button" ng-click="newFriend()">Find friends</button>-->
+		<button class="button button-icon icon ion-chatbubbles" ng-click="$state.go('feed')"></button>
+		<h1 class="title">Friends</h1>
+		<button class="button button-icon icon ion-gear-b" ng-click="$state.go('settings')"></button>
+	</ion-header-bar>
+	<ion-content>
+		<!---<ion-scroll>--->
+			<div class="cush-10" ng-if="friends.$getIndex().length < 1"><p>You don't have any contacts yet.</p></div>
+			<ion-list>
+			  <ion-item class="item-button-right r-pad-0" ng-repeat="friend in friends | orderByPriority | filter: { name : f.search } | orderBy: 'name'">
+				<h2 ng-click="">{{friend.name}}</h2>
+				<p ng-if="friend.number">{{friend.number}}</p>
+				<button class="button button-assertive" ng-click="confirmDelete(((friend.number) ? friend.number : friend.uid), friend.name)">
+				  <i class="icon ion-minus-round"></i>
+				</button>
+			  </ion-item>
+			</ion-list>
+			<ion-list>
+			  <ion-item class="item-button-right r-pad-0" ng-repeat="contact in contacts | orderBy: 'displayName'">
+				<h2 ng-click="">{{contact.displayName}}</h2>
+				<p>{{contact.phoneNumbers.0.value}}</p>
+				<button class="button button-assertive" ng-click="">
+				  <i class="icon ion-minus-round"></i>
+				</button>
+			  </ion-item>
+			</ion-list>
+		<!---</ion-scroll>--->
+	</ion-content>
+	<ion-footer-bar class="bar-calm" ng-click="syncContacts()">
+		<h1 class="title">
+			Check contacts now
+		</h1>
+	</ion-footer-bar>
+	<ion-footer-bar class="bar-stable" ng-click="newFriend()">
+		<h1 class="title" style="padding-top:7px;">
+			<button class="button button-icon icon ion-person-add"></button>
+		</h1>
+	</ion-footer-bar>
+</ion-view>

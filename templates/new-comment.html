@@ -1,0 +1,33 @@
+<div class="modal" ng-controller="CommentsCtrl">
+	<!-- Modal header bar -->
+	<ion-header-bar class="bar-secondary bar-royal">
+		<h1 class="title">Comment</h1>
+		<button class="button button-clear" ng-click="closeNewComment()">Cancel</button>
+	</ion-header-bar>
+	<!-- Modal content area -->
+	<ion-content>
+		<form>
+			<ul class="list">
+				<li class="item item-input">
+					<textarea  placeholder="What do you have to say?" ng-model="data.content" ng-required ng-minlength="1" ng-maxlength="2000"></textarea>
+				</li>
+				 <li class="item item-toggle">
+					 Anonymous
+					 <label class="toggle toggle-positive">
+					   <input type="checkbox" ng-model="data.annonymous">
+					   <div class="track">
+						 <div class="handle"></div>
+					   </div>
+					 </label>
+				 </li>
+		<!---		 <li class="item item-radio">
+					<ion-radio ng-model="data.toSender" ng-value="false">All recipients</ion-radio>
+					<ion-radio ng-model="data.toSender" ng-value="true">Sender only</ion-radio>
+				 </li>-->
+			</ul>
+		</form>
+	</ion-content>
+	<ion-footer-bar class="bar-positive" ng-click="sendComment(commentFeedId)">
+	  <h1 class="title">Send</h1>
+	</ion-footer-bar>
+</div>

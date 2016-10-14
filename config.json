@@ -1,0 +1,67 @@
+{
+	"config_version": "4",
+	"name": "CanChat",
+	"author": "zablockijj@gmail.com",
+	"version": "0.1.2",
+	"platform_version": "v2.1.7",
+	"description": "An empty app created by default",
+	"core": {
+		"general": {
+			"logging": {
+				"level": "DEBUG"
+			}
+		},
+		"android": {
+			"minimum_version": "14",
+			"package_name": "co.canchat.app"
+		}
+	},
+	"modules": {
+		"facebook": {
+			"version": "2.5",
+			"config": {
+				"appid": "410011092475280"
+			}
+		},
+		"parse": {
+			"version": "2.3",
+			"config": {
+				"clientKey": "ndCzKRvO0DjZznWdXTb7nNagJFCLN4vYOMWuSwT6",
+				"applicationId": "87lHoEIBLypXbUthdUMInBJbN5Zry2ZxfdKiJUIv"
+			}
+		},
+		"icons": {
+			"version": "2.2",
+			"config": {
+				"android": {
+					"36": "res/icon/android/LDPI.png",
+					"48": "res/icon/android/MDPI.png",
+					"72": "res/icon/android/HDPI.png",
+					"96": "res/icon/android/XHDPI.png",
+					"144": "res/icon/android/XXHDPI.png"
+				}
+			}
+		},
+		"launchimage": {
+			"version": "2.4",
+			"config": {
+				"background-size": "cover",
+				"android-landscape": "res/screen/android/HDPI_land.png",
+				"android": "res/screen/android/HDPI.png"
+			}
+		},
+		"notification": {
+			"version": "2.4"
+		},
+		"contact": {
+			"version": "2.3"
+		},
+		"request": {
+			"version": "2.5",
+			"config": {
+				"permissions": []
+			}
+		}
+	},
+	"homepage": "http://www.canchat.co"
+}
